@@ -4,6 +4,7 @@ import {
   deleteProduct,
   getProductById,
   listProducts,
+  searchProducts,
   updateProduct,
 } from "../controllers/productController";
 import { errorHandler } from "../error-handler";
@@ -28,6 +29,7 @@ router.delete(
   errorHandler(deleteProduct)
 );
 router.get("/", [authMiddleware, adminMiddleware], errorHandler(listProducts));
+router.get("/search", [authMiddleware], errorHandler(searchProducts));
 router.get(
   "/:id",
   [authMiddleware, adminMiddleware],
